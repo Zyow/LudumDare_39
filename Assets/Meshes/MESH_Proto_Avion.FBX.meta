@@ -9,22 +9,41 @@ ModelImporter:
     100002: //RootNode
     100004: MESH_Reacteur
     100006: MESH_Roues
+    100008: Box001
+    100010: Cylinder001
+    100012: MESH_Ailes001
+    100014: MESH_Cockpit
     400000: MESH_Ailes
     400002: //RootNode
     400004: MESH_Reacteur
     400006: MESH_Roues
+    400008: Box001
+    400010: Cylinder001
+    400012: MESH_Ailes001
+    400014: MESH_Cockpit
     2300000: MESH_Ailes
     2300002: //RootNode
     2300004: MESH_Reacteur
     2300006: MESH_Roues
+    2300008: Box001
+    2300010: Cylinder001
+    2300012: MESH_Ailes001
+    2300014: MESH_Cockpit
     3300000: MESH_Ailes
     3300002: //RootNode
     3300004: MESH_Reacteur
     3300006: MESH_Roues
+    3300008: Box001
+    3300010: Cylinder001
+    3300012: MESH_Ailes001
+    3300014: MESH_Cockpit
     4300000: MESH_Cockpit
     4300002: MESH_Reacteur
     4300004: MESH_Ailes
     4300006: MESH_Roues
+    4300008: MESH_Ailes001
+    4300010: Cylinder001
+    4300012: Box001
   materials:
     importMaterials: 1
     materialName: 0
