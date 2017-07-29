@@ -1,15 +1,27 @@
 fileFormatVersion: 2
-guid: dc94e47cf371dff46b990db6ae6cca9e
-timeCreated: 1501340887
+guid: 10a508a80f9201c49aa00d451872461e
+timeCreated: 1501347527
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Box002
+    100000: MESH_Carcasse1
+    100002: MESH_Carcasse2
+    100004: MESH_Carcasse3
+    100006: //RootNode
+    400000: MESH_Carcasse1
+    400002: MESH_Carcasse2
+    400004: MESH_Carcasse3
+    400006: //RootNode
+    2300000: MESH_Carcasse1
+    2300002: MESH_Carcasse2
+    2300004: MESH_Carcasse3
+    3300000: MESH_Carcasse1
+    3300002: MESH_Carcasse2
+    3300004: MESH_Carcasse3
+    4300000: MESH_Carcasse3
+    4300002: MESH_Carcasse2
+    4300004: MESH_Carcasse1
   materials:
     importMaterials: 1
     materialName: 0
