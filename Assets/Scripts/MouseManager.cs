@@ -32,11 +32,7 @@ public class MouseManager : MonoBehaviour
         return null;
     }
 
-    void RightClick()
-    {
-
-    }
-
+ 
     GameObject FindShipPart(Collider collider)
     {
         Transform curr = collider.transform;
@@ -52,6 +48,18 @@ public class MouseManager : MonoBehaviour
         return null;
     }
 
+    //Enlever une partie du vaisseau
+    void RightClick()
+    {
+        Collider col = DoRaycast();
+
+        if (col == null)
+            return;
+
+        Destroy(col.transform.parent.gameObject);
+    }
+
+    //Poser une partie de vaisseau
     void LeftClick()
     {
         Collider col = DoRaycast();
@@ -69,6 +77,32 @@ public class MouseManager : MonoBehaviour
 
             GameObject go = (GameObject)Instantiate(PrefabToSpawn, spawnSpot, spawnRot);
             go.transform.SetParent(col.transform);
+        }
+    }
+
+    void SetSnapPointEnabled (Transform t, bool setToActive)
+    {
+        int MaskforThisHitObject = 1 << t.gameObject.layer;
+
+        if ((MaskforThisHitObject & SnapLayerMask) != 0 )
+        {
+            //Activation du SnapPoint (au cas où)
+            if (setToActive)
+                t.gameObject.SetActive(true);
+            else
+            {
+                //Desactivation du SnapPoint si il n'a pas d'enfants
+                if (t.childCount == 0)
+                {
+                    t.gameObject.SetActive(false);
+                    return;
+                }
+            }
+        }
+
+        for (int i=0; i < t.childCount; i++)
+        {
+            SetSnapPointEnabled(t.GetChild(i), setToActive);
         }
     }
 
