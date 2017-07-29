@@ -1,64 +1,15 @@
 fileFormatVersion: 2
-guid: a01cf7131ca3f7b45a68900608ae01b9
-timeCreated: 1501320540
+guid: dc94e47cf371dff46b990db6ae6cca9e
+timeCreated: 1501340887
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: MESH_Ailes
-    100002: //RootNode
-    100004: MESH_Reacteur
-    100006: MESH_Roues
-    100008: Box001
-    100010: Cylinder001
-    100012: MESH_Ailes001
-    100014: MESH_Cockpit
-    100016: MESH_Moteur
-    100018: Object001
-    100020: Object002
-    400000: MESH_Ailes
-    400002: //RootNode
-    400004: MESH_Reacteur
-    400006: MESH_Roues
-    400008: Box001
-    400010: Cylinder001
-    400012: MESH_Ailes001
-    400014: MESH_Cockpit
-    400016: MESH_Moteur
-    400018: Object001
-    400020: Object002
-    2300000: MESH_Ailes
-    2300002: //RootNode
-    2300004: MESH_Reacteur
-    2300006: MESH_Roues
-    2300008: Box001
-    2300010: Cylinder001
-    2300012: MESH_Ailes001
-    2300014: MESH_Cockpit
-    2300016: MESH_Moteur
-    2300018: Object001
-    2300020: Object002
-    3300000: MESH_Ailes
-    3300002: //RootNode
-    3300004: MESH_Reacteur
-    3300006: MESH_Roues
-    3300008: Box001
-    3300010: Cylinder001
-    3300012: MESH_Ailes001
-    3300014: MESH_Cockpit
-    3300016: MESH_Moteur
-    3300018: Object001
-    3300020: Object002
-    4300000: MESH_Cockpit
-    4300002: MESH_Reacteur
-    4300004: MESH_Ailes
-    4300006: MESH_Roues
-    4300008: MESH_Ailes001
-    4300010: Cylinder001
-    4300012: Box001
-    4300014: MESH_Moteur
-    4300016: Object001
-    4300018: Object002
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Box002
   materials:
     importMaterials: 1
     materialName: 0
@@ -94,7 +45,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
