@@ -40,19 +40,23 @@ public class RampManager : MonoBehaviour
         if (lauchTime)
         {
 
-            angleRamp += Input.GetAxis("Mouse Y") * -speedRot * Time.deltaTime;
+            //angleRamp += Input.GetAxis("Mouse Y") * -speedRot * Time.deltaTime
+            angleRamp += Input.GetAxis("Vertical") * -speedRot * Time.deltaTime;
             angleRamp = Mathf.Clamp(angleRamp, -30.0f, 0f);
-            transform.rotation = Quaternion.Euler(angleRamp, 0.0f, 0.0f);
+            transform.rotation = Quaternion.Euler(angleRamp, 90f, 0.0f);
 
-            playerPlane.transform.position = hookLauncher.transform.position;
-            playerPlane.transform.rotation = hookLauncher.transform.rotation;
-
-            if (Input.GetMouseButtonDown(0))
+            if (playerPlane != null)
             {
-                if (playerPlane.GetComponent<Controller>())
-                {
-                    GetComponent<Animator>().SetTrigger("LaunchTrigger");
-                }
+                playerPlane.transform.position = hookLauncher.transform.position;
+                playerPlane.transform.rotation = hookLauncher.transform.rotation;
+            }
+
+            //if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (playerPlane != null)
+                    if (playerPlane.GetComponent<Controller>())
+                        GetComponent<Animator>().SetTrigger("LaunchTrigger");
             }
 
         }
