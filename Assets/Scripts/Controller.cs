@@ -12,6 +12,9 @@ public class Controller : MonoBehaviour
 
     public float speed;
 
+    public float pitch;
+    public float roll; 
+
     private float mouseX;
     private float mouseY;
 
@@ -21,15 +24,59 @@ public class Controller : MonoBehaviour
     private Rigidbody rb;
     public Camera cam;
 
+    private Quaternion targetRotation;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
-       // cam = GetComponentInChildren<Camera>();
-       // cam.enabled = false;
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+        // cam = GetComponentInChildren<Camera>();
+        // cam.enabled = false;
+
+        targetRotation = transform.rotation;
+    }
+
+    private void Update()
+    {
+        //Camera
+        Vector3 camChaseSpot = transform.position - transform.forward * 10.0f + Vector3.up * 5.0f;
+        float chaseBias = 0.9f;
+
+        Camera.main.transform.position = chaseBias * Camera.main.transform.position + (1.0f - chaseBias) * camChaseSpot;
+        Camera.main.transform.LookAt(transform.position + transform.forward * 20.0f);
+
+        //Rotation
+        //roll += Input.GetAxis("Horizontal") * 2f;
+        // pitch += Input.GetAxis("Vertical") * 2f;
+
+        //transform.Rotate(0f, roll * Time.deltaTime, 0f, Space.World);
+        //transform.rotation = Quaternion.Euler(pitch, transform.rotation.eulerAngles.y, -roll);
+        //transform.Rotate(pitch * 0.01f, 0f, 0f);
+        //speed -= Time.deltaTime * 0.2f;
+        speed -= transform.forward.y * 0.3f;
+
+        if (speed < 5.0f)
+        {
+            speed = 5.0f;
+        }
+
+        float controlEffect = speed / 50.0f;
+
+        //transform.position += transform.forward * Time.deltaTime * speed;
+        transform.Rotate(controlEffect * Input.GetAxis("Vertical"), 0.0f, -controlEffect * Input.GetAxis("Horizontal"));
+
+        //Translation
+        
+        //transform.position += transform.forward * Time.deltaTime * speed;
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+        //Gravité
+        //transform.Translate(-Vector3.up * 0.02f);
+        rb.AddForce(Physics.gravity * rb.mass * 0.02f);
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate ()
     {
 
         // mouseX += Input.GetAxis("Mouse X");
@@ -62,14 +109,9 @@ public class Controller : MonoBehaviour
 
         //++
 
-        Vector3 camChaseSpot = transform.position -
-                        transform.forward * 10.0f +
-        Vector3.up * 5.0f;
-        float chaseBias = 0.9f;
-        Camera.main.transform.position = chaseBias * Camera.main.transform.position +
-            (1.0f - chaseBias) * camChaseSpot;
-        Camera.main.transform.LookAt(transform.position + transform.forward * 20.0f);
 
+
+        /*
         if (Input.GetMouseButtonDown(0))
           {
               rb.AddForce(transform.forward * enginePower);
@@ -88,8 +130,8 @@ public class Controller : MonoBehaviour
         rb.AddTorque(Input.GetAxis("Vertical") * transform.right);
 
         //Set drag and angular drag according relative to speed
-        /*rb.drag = 0.001f * rb.velocity.magnitude;
-          rb.angularDrag = 0.01f * rb.velocity.magnitude;*/
+        rb.drag = 0.001f * rb.velocity.magnitude;
+          rb.angularDrag = 0.01f * rb.velocity.magnitude;
 
         speed -= Time.deltaTime * 0.2f;
 
@@ -99,9 +141,18 @@ public class Controller : MonoBehaviour
 
         // rb.AddForce(-Vector3.up * gravity, ForceMode.Acceleration);
 
+       */
+        // transform.Rotate(Vector3.forward * -Input.GetAxis("Horizontal"), 200f * Time.deltaTime);
+        //transform.Rotate(Vector3.right * Input.GetAxis("Vertical"), 50f * Time.deltaTime);
+
+        // transform.Rotate(Vector3.forward * -Input.GetAxis("Horizontal"), 200f * Time.deltaTime, Space.Self);
+        // transform.Rotate(Vector3.right, Input.GetAxis("Vertical") * 100f * Time.deltaTime, Space.Self);
+
 
 
     }
+
+ 
 
     public void Launch()
     {

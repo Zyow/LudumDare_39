@@ -5430,8 +5430,11 @@ MonoBehaviour:
   enginePower: 1000
   gravity: 10
   speed: 100
+  pitch: 0
+  roll: 0
   lift: {x: 0, y: 0, z: 0}
   liftBooster: 0
+  cam: {fileID: 0}
 --- !u!54 &1385486611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5531,7 +5534,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4039176200394564, guid: 4f32c6135aa8d3a4382cef6cf048ac70, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.82
+      value: 12.975
       objectReference: {fileID: 0}
     - target: {fileID: 4039176200394564, guid: 4f32c6135aa8d3a4382cef6cf048ac70, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5560,6 +5563,31 @@ Prefab:
     - target: {fileID: 1987370882015714, guid: 4f32c6135aa8d3a4382cef6cf048ac70, type: 2}
       propertyPath: m_Name
       value: camFly
+      objectReference: {fileID: 0}
+    - target: {fileID: 20621860146518270, guid: 4f32c6135aa8d3a4382cef6cf048ac70,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020870684901922, guid: 4f32c6135aa8d3a4382cef6cf048ac70,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020870684901922, guid: 4f32c6135aa8d3a4382cef6cf048ac70,
+        type: 2}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 54977932836610086, guid: 4f32c6135aa8d3a4382cef6cf048ac70,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54977932836610086, guid: 4f32c6135aa8d3a4382cef6cf048ac70,
+        type: 2}
+      propertyPath: m_Mass
+      value: 0.0001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f32c6135aa8d3a4382cef6cf048ac70, type: 2}
@@ -6178,6 +6206,10 @@ Prefab:
       propertyPath: playerPlane
       value: 
       objectReference: {fileID: 1882396174}
+    - target: {fileID: 1613560371346710, guid: b897079b5ff596347b12bfb78e13c7fe, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b897079b5ff596347b12bfb78e13c7fe, type: 2}
   m_IsPrefabParent: 0

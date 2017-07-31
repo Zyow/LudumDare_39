@@ -358,6 +358,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e083854047b3ef04aa3d9bf190ff3f74, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &541644488 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1138855634764072, guid: f68732432947dda49ab6dbc1477355c4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1722399083}
+--- !u!81 &541644490
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 541644488}
+  m_Enabled: 1
 --- !u!1 &646447875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,7 +1271,8 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81680089244373102, guid: f68732432947dda49ab6dbc1477355c4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f68732432947dda49ab6dbc1477355c4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1853928410 stripped
@@ -1306,7 +1319,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.3
   m_Range: 150
   m_SpotAngle: 65
   m_CookieSize: 10
@@ -1346,3 +1359,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &2034913641 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1272343021834534, guid: 0a74b06dd876cbd48813d72f19c1a4e9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1170002855}
+--- !u!64 &2034913645
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034913641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 1.00000005e-20
+  m_Mesh: {fileID: 4300000, guid: 68131650ed2139a438f5a5b917f788dc, type: 3}
