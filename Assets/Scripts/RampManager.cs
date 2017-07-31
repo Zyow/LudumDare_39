@@ -17,19 +17,21 @@ public class RampManager : MonoBehaviour
 
 
 	void Start () {
-        StartLauch();
-
+        //StartLauch();
     }
 
     public void StartLauch()
     {
         if (playerPlane == null)
-            playerPlane = GameObject.FindGameObjectWithTag("Player");
+            playerPlane = FindObjectOfType<Controller>().gameObject;
 
         if (playerPlane != null)
         {
+            //Debug.Log(playerPlane);
             playerPlane.transform.position = hookLauncher.transform.position;
             playerPlane.transform.rotation = hookLauncher.transform.rotation;
+            playerPlane.GetComponent<Controller>().enabled = true;
+            playerPlane.GetComponent<Controller>().cam.enabled = true;
         }
 
         lauchTime = true;

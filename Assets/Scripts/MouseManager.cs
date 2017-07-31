@@ -5,8 +5,22 @@ using UnityEngine;
 public class MouseManager : MonoBehaviour
 {
     public GameObject PrefabToSpawn;
+    public GameObject rootToSpawn;
+    public Transform tfmRootSpawn;
     public LayerMask SnapLayerMask;
     public GameObject shipRoot;
+
+    private void Start()
+    {
+        GameObject goRoot = GameObject.FindGameObjectWithTag("Player");
+
+        if (goRoot == null)
+            {
+                var root = Instantiate(rootToSpawn, tfmRootSpawn);
+               root.transform.parent = null;
+                Debug.Log(rootToSpawn + " a été créé");
+            }
+    }
 
     void Update()
     {
@@ -56,7 +70,20 @@ public class MouseManager : MonoBehaviour
         if (col == null)
             return;
 
-        Destroy(col.transform.parent.gameObject);
+        if (col.gameObject.tag == "ShipPart")
+        {
+            if (col.GetComponent<Root>() != null)
+                Debug.Log("Vous ne pouvez pas supprimer le coeur!");
+            else
+                Destroy(col.transform.parent.gameObject);
+        }
+        else
+        {
+            Debug.Log("Vous ne pouvez pas supprimer ça");
+
+        }
+
+
     }
 
     //Poser une partie de vaisseau

@@ -19,10 +19,13 @@ public class Controller : MonoBehaviour
     public float liftBooster;
 
     private Rigidbody rb;
+    public Camera cam;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
+       // cam = GetComponentInChildren<Camera>();
+       // cam.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -103,7 +106,7 @@ public class Controller : MonoBehaviour
     public void Launch()
     {
         //rb.AddForce(transform.forward * 8000f, ForceMode.Acceleration);
-        speed += 200f;
+        speed += 50f;
     }
 
     void OnDrawGizmos()
