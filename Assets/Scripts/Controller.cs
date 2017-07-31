@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class Controller : MonoBehaviour
 {
+    public float energy = 100f;
     public float enginePower = 10f;
 
     public float gravity = 0.02f;
@@ -35,8 +36,14 @@ public class Controller : MonoBehaviour
         Camera.main.transform.LookAt(transform.position + transform.forward * 20.0f);
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            speed += enginePower;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (energy > 0 )
+            {
+                speed += enginePower * Time.deltaTime;
+                energy -= enginePower * Time.deltaTime;
+            }
+        }
 
         //Speed -- en fonction de la hauteur
         speed -= transform.forward.y * 0.2f;
@@ -58,6 +65,11 @@ public class Controller : MonoBehaviour
 
         //Gravité
         rb.AddForce(Physics.gravity * rb.mass * gravity);
+
+    }
+
+    public void Death()
+    {
 
     }
 
