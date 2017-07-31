@@ -5,21 +5,11 @@ using UnityEditor;
 
 public class Controller : MonoBehaviour
 {
-
     public float enginePower = 10f;
 
-    public float gravity = 10f;
+    public float gravity = 0.02f;
 
     public float speed;
-
-    public float pitch;
-    public float roll; 
-
-    private float mouseX;
-    private float mouseY;
-
-    public Vector3 lift;
-    public float liftBooster;
 
     private Rigidbody rb;
     public Camera cam;
@@ -44,15 +34,12 @@ public class Controller : MonoBehaviour
         Camera.main.transform.position = chaseBias * Camera.main.transform.position + (1.0f - chaseBias) * camChaseSpot;
         Camera.main.transform.LookAt(transform.position + transform.forward * 20.0f);
 
-        //Rotation
-        //roll += Input.GetAxis("Horizontal") * 2f;
-        // pitch += Input.GetAxis("Vertical") * 2f;
 
-        //transform.Rotate(0f, roll * Time.deltaTime, 0f, Space.World);
-        //transform.rotation = Quaternion.Euler(pitch, transform.rotation.eulerAngles.y, -roll);
-        //transform.Rotate(pitch * 0.01f, 0f, 0f);
-        //speed -= Time.deltaTime * 0.2f;
-        speed -= transform.forward.y * 0.3f;
+        if (Input.GetKeyDown(KeyCode.Space))
+            speed += enginePower;
+
+        //Speed -- en fonction de la hauteur
+        speed -= transform.forward.y * 0.2f;
 
         if (speed < 5.0f)
         {
@@ -70,94 +57,14 @@ public class Controller : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
         //Gravité
-        //transform.Translate(-Vector3.up * 0.02f);
-        rb.AddForce(Physics.gravity * rb.mass * 0.02f);
+        rb.AddForce(Physics.gravity * rb.mass * gravity);
 
     }
-
-    // Update is called once per frame
-    void FixedUpdate ()
-    {
-
-        // mouseX += Input.GetAxis("Mouse X");
-        // mouseY += Input.GetAxis("Mouse Y");
-
-        // transform.Rotate(0f, mouseX * Time.deltaTime, 0f, Space.World);
-        //transform.rotation = Quaternion.Euler(mouseY, transform.rotation.eulerAngles.y, -mouseX);
-        //transform.Rotate(mouseY * 0.01f, 0f, 0f);
-
-        /* if (Input.GetMouseButton(0))
-         {
-             // transform.Translate(0f, 0f, speed * Time.deltaTime);
-             //rb.AddForce(transform.forward * enginePower * Time.deltaTime, ForceMode.Acceleration);
-             rb.AddRelativeForce(transform.forward * enginePower * Time.deltaTime, ForceMode.Acceleration);
-         }
-
-
-         //if (enginePower > 35f)
-         //   enginePower = 35f;
-
-         if (enginePower < 0)
-             enginePower = 0;
-
-         transform.Rotate(Input.GetAxis("Mouse Y"), 0, -Input.GetAxis("Mouse X"));
-
-         GetComponent<Rigidbody>().AddForce(-Vector3.up * gravity, ForceMode.Acceleration);
-
-         var localVelocity = transform.InverseTransformDirection(rb.velocity);
-         speed = Mathf.Max(0, localVelocity.z);*/
-
-        //++
-
-
-
-        /*
-        if (Input.GetMouseButtonDown(0))
-          {
-              rb.AddForce(transform.forward * enginePower);
-          }
-
-        //Add lift force ,  set liftBooster to 100 
-          lift = Vector3.Project(rb.velocity, transform.forward);
-          rb.AddForce(transform.up * lift.magnitude * liftBooster);
-
-        //Banking controls, turning turning left and right on Z axis
-        //rb.AddTorque(Input.GetAxis("Mouse X") * transform.forward * -1f);
-        rb.AddTorque(Input.GetAxis("Horizontal") * transform.forward * -1f);
-
-        //Pitch controls, turning the nose up and down
-        //rb.AddTorque(-Input.GetAxis("Mouse Y") * transform.right);
-        rb.AddTorque(Input.GetAxis("Vertical") * transform.right);
-
-        //Set drag and angular drag according relative to speed
-        rb.drag = 0.001f * rb.velocity.magnitude;
-          rb.angularDrag = 0.01f * rb.velocity.magnitude;
-
-        speed -= Time.deltaTime * 0.2f;
-
-          var locVel = transform.InverseTransformDirection(rb.velocity);
-          locVel.z = speed;
-          rb.velocity = transform.TransformDirection(locVel);
-
-        // rb.AddForce(-Vector3.up * gravity, ForceMode.Acceleration);
-
-       */
-        // transform.Rotate(Vector3.forward * -Input.GetAxis("Horizontal"), 200f * Time.deltaTime);
-        //transform.Rotate(Vector3.right * Input.GetAxis("Vertical"), 50f * Time.deltaTime);
-
-        // transform.Rotate(Vector3.forward * -Input.GetAxis("Horizontal"), 200f * Time.deltaTime, Space.Self);
-        // transform.Rotate(Vector3.right, Input.GetAxis("Vertical") * 100f * Time.deltaTime, Space.Self);
-
-
-
-    }
-
- 
 
     public void Launch()
     {
         //rb.AddForce(transform.forward * 8000f, ForceMode.Acceleration);
-        speed += 50f;
+        speed += 100f;
     }
 
     void OnDrawGizmos()
