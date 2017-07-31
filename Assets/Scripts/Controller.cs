@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.UI;
+//using UnityEditor;
+
 
 public class Controller : MonoBehaviour
 {
@@ -14,8 +16,14 @@ public class Controller : MonoBehaviour
 
     private Rigidbody rb;
     public Camera cam;
+    public GameObject ui;
 
     private Quaternion targetRotation;
+
+    //UI
+    public Scrollbar energyBar;
+    public Text energyText;
+    public Text speedText;
 
     // Use this for initialization
     void Start () {
@@ -66,11 +74,24 @@ public class Controller : MonoBehaviour
         //Gravité
         rb.AddForce(Physics.gravity * rb.mass * gravity);
 
+
+        //UI
+        speedText.text = "Speed : " + Mathf.Round(speed).ToString();
+
+        var pourEnergy = (energy - 0) / (100 - 0);
+        energyBar.size = pourEnergy;
+        
+        if (energy > 0)
+            energyText.text = "Energy : " + Mathf.Round(energy).ToString();
+        else
+            energyText.text = "Energy tank empty";
     }
 
     public void Death()
     {
-
+        GameObject go = GameObject.FindGameObjectWithTag("RestartManager");
+        go.GetComponent<RestartManager>().Restart();
+        Destroy(gameObject);
     }
 
     public void Launch()
@@ -79,7 +100,28 @@ public class Controller : MonoBehaviour
         speed += 100f;
     }
 
-    void OnDrawGizmos()
+    public void Win()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("RestartManager");
+        go.GetComponent<RestartManager>().Win();
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Terrain")
+            Death();
+
+
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Win")
+            Win();
+    }
+
+   /* void OnDrawGizmos()
     {
         GUIStyle style = new GUIStyle();
         style.normal.textColor = Color.green;
@@ -102,6 +144,6 @@ public class Controller : MonoBehaviour
         Vector3 destination = transform.position + direction * scale;
         Gizmos.DrawLine(transform.position, destination);
     }
-
+    */
 
 }

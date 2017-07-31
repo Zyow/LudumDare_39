@@ -32,6 +32,8 @@ public class RampManager : MonoBehaviour
             playerPlane.transform.rotation = hookLauncher.transform.rotation;
             playerPlane.GetComponent<Controller>().enabled = true;
             playerPlane.GetComponent<Controller>().cam.enabled = true;
+            playerPlane.GetComponent<Controller>().ui.SetActive(true);
+
         }
 
         lauchTime = true;

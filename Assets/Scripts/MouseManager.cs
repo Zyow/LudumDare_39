@@ -12,14 +12,19 @@ public class MouseManager : MonoBehaviour
 
     private void Start()
     {
+        CreateRoot();
+    }
+
+    public void CreateRoot()
+    {
         GameObject goRoot = GameObject.FindGameObjectWithTag("Player");
 
         if (goRoot == null)
-            {
-                var root = Instantiate(rootToSpawn, tfmRootSpawn);
-               root.transform.parent = null;
-                Debug.Log(rootToSpawn + " a été créé");
-            }
+        {
+            var root = Instantiate(rootToSpawn, tfmRootSpawn);
+            root.transform.parent = null;
+            Debug.Log(rootToSpawn + " a été créé");
+        }
     }
 
     void Update()
