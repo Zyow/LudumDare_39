@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseManager : MonoBehaviour
+public class EditorManager : MonoBehaviour
 {
     public GameObject PrefabToSpawn;
     public GameObject rootToSpawn;
@@ -10,14 +10,28 @@ public class MouseManager : MonoBehaviour
     public LayerMask SnapLayerMask;
     public GameObject shipRoot;
 
+    public CameraManager camManager;
+
+
     private void Start()
     {
-        CreateRoot();
+        camManager = FindObjectOfType<CameraManager>();
+
+        FirstRoot();
     }
+
+    public void FirstRoot()
+    {
+            var root = Instantiate(rootToSpawn, tfmRootSpawn);
+            root.transform.parent = null;
+            camManager.NewRoot(root.transform.position);
+            Debug.Log(rootToSpawn + " a été créé la premiere fois");
+    }
+
 
     public void CreateRoot()
     {
-        GameObject goRoot = GameObject.FindGameObjectWithTag("Player");
+        GameObject goRoot = FindObjectOfType<Root>().gameObject;
 
         if (goRoot == null)
         {
@@ -58,7 +72,7 @@ public class MouseManager : MonoBehaviour
 
         while (curr != null)
         {
-            if (curr.gameObject.tag == "ShipPart")
+            if ((curr.gameObject.tag == "ShipPart") || (curr.gameObject.tag == "Root"))
                 return curr.gameObject;
 
             curr = curr.parent;
@@ -75,7 +89,7 @@ public class MouseManager : MonoBehaviour
         if (col == null)
             return;
 
-        if (col.gameObject.tag == "ShipPart")
+        if ((col.gameObject.tag == "ShipPart") || (col.gameObject.tag == "Root"))
         {
             if (col.GetComponent<Root>() != null)
                 Debug.Log("Vous ne pouvez pas supprimer le coeur!");

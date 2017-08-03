@@ -6,7 +6,7 @@ Shader "CouchGames/Toon/Lit" {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 		_OutlineColor("Outline Color", Color) = (0,0,0,1)
-		_Outline("Outline width", Range(.002, 2)) = 0.35
+		_Outline("Outline width", Range(.002, 0.1)) = 0.1
 	}
 
 

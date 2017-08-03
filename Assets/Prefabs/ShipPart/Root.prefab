@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114264980474327994}
   m_Layer: 0
   m_Name: Root
-  m_TagString: ShipPart
+  m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,25 +222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1987370882015714
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4592638803410020}
-  - component: {fileID: 20621860146518270}
-  - component: {fileID: 92789971411910738}
-  - component: {fileID: 124407656692486564}
-  - component: {fileID: 81770793007701978}
-  m_Layer: 0
-  m_Name: CamFly
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1994875738691414
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +253,6 @@ Transform:
   - {fileID: 4935615944975668}
   - {fileID: 4254153989095420}
   - {fileID: 4083341430128830}
-  - {fileID: 4592638803410020}
   - {fileID: 224582567408352910}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -329,19 +309,6 @@ Transform:
   m_Father: {fileID: 4039176200394564}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
---- !u!4 &4592638803410020
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987370882015714}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: -4.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4039176200394564}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4935615944975668
 Transform:
   m_ObjectHideFlags: 1
@@ -368,42 +335,6 @@ Transform:
   m_Father: {fileID: 4039176200394564}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -270, y: -180, z: -0.000015258789}
---- !u!20 &20621860146518270
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987370882015714}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 8000
-  field of view: 70
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294966783
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!23 &23013942249600454
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -626,20 +557,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0014228, y: 1.0205319, z: 1.0175259}
   m_Center: {x: -0.0012814654, y: -0.00000002462714, z: 0.2078695}
---- !u!81 &81770793007701978
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987370882015714}
-  m_Enabled: 1
---- !u!92 &92789971411910738
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987370882015714}
-  m_Enabled: 1
 --- !u!114 &114002935465295322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,7 +618,7 @@ MonoBehaviour:
   enginePower: 10
   gravity: 0.02
   speed: 0
-  cam: {fileID: 20621860146518270}
+  cam: {fileID: 0}
   ui: {fileID: 1953805448031884}
   energyBar: {fileID: 114002935465295322}
   energyText: {fileID: 114141557367983702}
@@ -885,13 +802,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Speed : 000'
---- !u!124 &124407656692486564
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1987370882015714}
-  m_Enabled: 1
 --- !u!135 &135185784892979414
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1072,7 +982,7 @@ RectTransform:
   - {fileID: 224272734869250570}
   - {fileID: 224278765802618044}
   m_Father: {fileID: 4039176200394564}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

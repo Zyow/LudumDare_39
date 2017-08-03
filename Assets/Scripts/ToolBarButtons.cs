@@ -13,7 +13,7 @@ public class ToolBarButtons : MonoBehaviour
     private void Start()
     {
 
-        MouseManager mouseManager = GameObject.FindObjectOfType<MouseManager>();
+        EditorManager mouseManager = GameObject.FindObjectOfType<EditorManager>();
 
         for (int i = 0; i < shipPartsList.Count; i++)
         {

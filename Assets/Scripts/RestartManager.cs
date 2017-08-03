@@ -24,7 +24,7 @@ public class RestartManager : MonoBehaviour
     public void Restart()
     {
         Editor.SetActive(true);
-        Editor.GetComponentInChildren<MouseManager>().CreateRoot();
+        Editor.GetComponentInChildren<EditorManager>().CreateRoot();
     }
 
     public void Win()

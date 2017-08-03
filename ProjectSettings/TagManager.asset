@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - RestartManager
   - Win
+  - Root
   layers:
   - Default
   - TransparentFX

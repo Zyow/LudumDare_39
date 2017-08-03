@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Camera mainCam;
-    private Transform cameraRig;
+    //Var Camera
+    [SerializeField]
+    private Camera mainCam;
+
+    //Cam Stat
+    public enum State
+    {
+        Menu,
+        Editor,
+        Flying,
+    }
+    public State camState;
+
+    //Position Camera
+    public Transform startPoint;
+    [SerializeField]
+    private Vector3 camPivot;
     private Vector3 lastMousePos;
 
     //Camera orbit options
@@ -18,16 +33,65 @@ public class CameraManager : MonoBehaviour
     public float maxDist = 25f;
     public bool InvertZoomDir = false;
 
-    private void Start()
+    //A Supprimer
+    public GameObject testPivot;
+
+    void Start()
     {
         mainCam = Camera.main;
-        cameraRig = mainCam.transform.parent;
+        StateMenu();
     }
 
     void Update ()
     {
-        OrbitCamera();
-        ZoomCamera();
+        CamSwitch();
+    }
+
+    public void NewRoot(Vector3 t)
+    {
+        camPivot = t;
+    }
+
+    public void StateMenu()
+    {
+        camState = State.Menu;
+    }
+
+    public void StateEditor()
+    {
+        camState = State.Editor;
+    }
+
+    public void StateFlying()
+    {
+        camState = State.Flying;
+    }
+
+
+    void CamSwitch()
+    {
+        switch (camState)
+        {
+            //Camera MenuPrincipal
+            case State.Menu:
+
+                MenuCamera();
+
+                break;
+
+            //Camera Editeur
+            case State.Editor:
+
+                OrbitCamera();
+                //ZoomCamera();
+
+                break;
+        }
+    }
+
+    void MenuCamera()
+    {
+        mainCam.transform.position = startPoint.position;
     }
 
     void ZoomCamera()
@@ -56,11 +120,13 @@ public class CameraManager : MonoBehaviour
             Vector3 posRelativToRig = mainCam.transform.localPosition;
             Vector3 rotationAngles = mouseMov / orbitSens;
 
+            testPivot.transform.position = camPivot;
+
             if (holdToOrbit)
                 rotationAngles *= Time.deltaTime;
 
-            mainCam.transform.RotateAround(cameraRig.position, mainCam.transform.right, -rotationAngles.y);
-            mainCam.transform.RotateAround(cameraRig.position, mainCam.transform.up, rotationAngles.x);
+            mainCam.transform.RotateAround(camPivot, mainCam.transform.right, -rotationAngles.y);
+            mainCam.transform.RotateAround(camPivot, mainCam.transform.up, rotationAngles.x);
 
             Quaternion lookRotation = Quaternion.LookRotation(-mainCam.transform.localPosition);
             mainCam.transform.rotation = lookRotation;
